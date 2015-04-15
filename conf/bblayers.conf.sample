@@ -12,6 +12,7 @@ BBLAYERS ?= " \
   ${SRCDIR}/yocto-poky/meta-yocto \
   ${SRCDIR}/yocto-poky/meta-yocto-bsp \
   ${SRCDIR}/yocto-meta-openembedded/meta-gnome \
+  ${SRCDIR}/yocto-meta-openembedded/meta-networking \
   ${SRCDIR}/meta-exor-us02 \
   ${SRCDIR}/meta-browser \  
 "
