@@ -7,11 +7,11 @@ SRCNAME = "kernel"
 SRC_URI = "git://github.com/ExorEmbedded/linux-us02.git;protocol=git"
 SRC_URI[md5sum] = "7094df7dedb134fa41ee6679a34de190"
 SCRBRANCH = "3.10-LTS"
-SRCREV = "2008d58e129ac838a453a9c6be66c29c031fcae2"
+SRCREV = "afbe937ce2c9f0acaa306661e0fbd9acaa88167b"
 
 KERNEL_RELEASE = "3.10"
 PV = "3.10"
-PR = "r9"
+PR = "r10"
 S = "${WORKDIR}/git"
 
 KERNEL_IMAGETYPE = "zImage"
