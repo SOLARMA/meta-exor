@@ -4,7 +4,7 @@ IMAGE_FEATURES += "ssh-server-openssh"
 IMAGE_INSTALL_append += "jmobile-portable gdbserver openvpn openssh-sftp-server gst-meta-base \
 	gst-meta-video gst-meta-audio gst-plugins-good-meta qt4-plugin-phonon-backend-gstreamer"
 
-JMobilePkg="${IMAGE_ROOTFS}/home/root/jmobile_portable_alterakit_cds3.tar.gz"
+JMobilePkg="${IMAGE_ROOTFS}/home/root/jmobile_alterakit.tar.gz"
 ROOTFS_POSTPROCESS_COMMAND += "[ -f ${JMobilePkg} ] && tar xzf ${JMobilePkg} -C ${IMAGE_ROOTFS}/home/root; rm ${JMobilePkg}"
 
 QT_PHONON = "-phonon -phonon-backend"
