@@ -4,4 +4,4 @@ require meta-toolchain-qt.inc
 
 inherit populate_sdk
 
-TOOLCHAIN_OUTPUTNAME = "exor-sdk"
+TOOLCHAIN_OUTPUTNAME = "exor-alterakit-sdk"
