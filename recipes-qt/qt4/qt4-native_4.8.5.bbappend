@@ -2,11 +2,13 @@ do_compile() {
         cd ${S} && oe_runmake CC="${CC}" CXX="${CXX}"
 }
 
+#do_populate_sysroot[postfuncs] = ""
+
 do_install() {
         install -d ${D}${bindir}/
         install -m 0755 bin/qmake ${D}${bindir}/qmake2
         for i in moc uic uic3 rcc lconvert lrelease lupdate qdbuscpp2xml qdbusxml2cpp xmlpatterns; do
-                [ -e "bin/${i}" ] && install -m 0755 bin/${i} ${D}${bindir}/${i}
+		[ -e "bin/${i}" ] && install -m 0755 bin/${i} ${D}${bindir}/${i}4
         done
 
         install -d ${D}${datadir}/qt4/
