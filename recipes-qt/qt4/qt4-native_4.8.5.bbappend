@@ -2,7 +2,7 @@ do_compile() {
         cd ${S} && oe_runmake CC="${CC}" CXX="${CXX}"
 }
 
-#do_populate_sysroot[postfuncs] = ""
+do_populate_sysroot[postfuncs] = ""
 
 do_install() {
         install -d ${D}${bindir}/
