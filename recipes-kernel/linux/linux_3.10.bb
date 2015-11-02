@@ -6,12 +6,12 @@ require recipes-kernel/linux/linux-yocto.inc
 SRC_URI = "git://github.com/ExorEmbedded/linux-us02.git;protocol=git;branch=3.10-LTS;nocheckout=1 \
 	file://defconfig"
 SRC_URI[md5sum] = "7094df7dedb134fa41ee6679a34de190"
-SRCREV = "afbe937ce2c9f0acaa306661e0fbd9acaa88167b"
+SRCREV = "ebfc71d70b39dc5a88b91aa72df669fc67f838cb"
 
 LINUX_VERSION ?= "3.10"
 LINUX_VERSION_EXTENSION ?= "-custom"
 
-PR = "r1"
+PR = "r2"
 PV = "${LINUX_VERSION}+git${SRCPV}"
 
 # Override COMPATIBLE_MACHINE to include your machine in a bbappend

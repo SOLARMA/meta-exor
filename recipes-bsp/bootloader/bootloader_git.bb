@@ -6,7 +6,8 @@ SRCNAME = "uboot"
 SRC_URI = "git://github.com/ExorEmbedded/uboot-us02.git;protocol=git"
 SRC_URI[md5sum] = "7094df7dedb134fa41ee6679a34de190"
 SRBCRANCH = "master"
-SRCREV = "01a2d95a6f6e2538f83ed206033486546125bf90"
+SRCREV = "65a97b18f60551c7c45c9965c21fa59b66a1594f"
+PR = "r2"
 
 S = "${WORKDIR}/git"
 
