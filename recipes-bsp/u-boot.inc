@@ -3,11 +3,6 @@ HOMEPAGE = "http://www.denx.de/wiki/U-Boot/WebHome"
 SECTION = "bootloaders"
 
 inherit uboot-config deploy
-inherit exorint-boottail
-
-# Set these to exclusively build only first or second stage
-SPL_ONLY ?= "0"
-UBOOT_ONLY ?= "0"
 
 EXTRA_OEMAKE = 'CROSS_COMPILE=${TARGET_PREFIX} CC="${TARGET_PREFIX}gcc ${TOOLCHAIN_OPTIONS}"'
 
@@ -16,19 +11,12 @@ EXTRA_OEMAKE = 'CROSS_COMPILE=${TARGET_PREFIX} CC="${TARGET_PREFIX}gcc ${TOOLCHA
 # file already exists it will not be overwritten.
 UBOOT_LOCALVERSION ?= ""
 
-# Some versions of u-boot use .bin and others use .img.  By default use .bin
-# but enable individual recipes to change this value.
-UBOOT_SUFFIX ?= "bin"
-UBOOT_IMAGE ?= "u-boot-${MACHINE}.${UBOOT_SUFFIX}"
-UBOOT_BINARY ?= "u-boot.${UBOOT_SUFFIX}"
-UBOOT_MAKE_TARGET ?= "all"
+UBOOT_SUFFIX = "img"
+UBOOT_IMAGE = "u-boot.${UBOOT_SUFFIX}"
+UBOOT_MAKE_TARGET = "all"
 
-# Some versions of u-boot build an SPL (Second Program Loader) image that
-# should be packaged along with the u-boot binary as well as placed in the
-# deploy directory.  For those versions they can set the following variables
-# to allow packaging the SPL.
-SPL_BINARY ?= ""
-SPL_IMAGE ?= "${SPL_BINARY}-${MACHINE}-${PV}-${PR}"
+SPL_SUFFIX = "hex"
+SPL_IMAGE = "u-boot-spl.${SPL_SUFFIX}"
 
 do_compile () {
 	if [ "${@base_contains('DISTRO_FEATURES', 'ld-is-gold', 'ld-is-gold', '', d)}" = "ld-is-gold" ] ; then
@@ -47,50 +35,23 @@ do_compile () {
 
 	oe_runmake ${UBOOT_MACHINE}
 	oe_runmake ${UBOOT_MAKE_TARGET}
+
+        cd ${S}/spl
+        $(CROSS_COMPILE)objcopy -O ihex --adjust-vma -0xc0000000 u-boot-spl ${SPL_IMAGE}
 }
-
-do_install () {
-
-    install -d ${D}/boot
-
-    if [ "${UBOOT_ONLY}" = "1" ]; then
-        install ${S}/${UBOOT_BINARY} ${D}/boot/${UBOOT_IMAGE}
-        ln -sf ${UBOOT_IMAGE} ${D}/boot/${UBOOT_BINARY}
-    elif [ "${SPL_ONLY}" = "1" ]; then
-        install ${S}/${SPL_BINARY} ${D}/boot/${SPL_IMAGE}
-        ln -sf ${SPL_IMAGE} ${D}/boot/${SPL_BINARY}
-    fi
-
-    if [ -e ${WORKDIR}/fw_env.config ] ; then
-        install -d ${D}${sysconfdir}
-        install -m 644 ${WORKDIR}/fw_env.config ${D}${sysconfdir}/fw_env.config
-    fi
-}
-
-FILES_${PN} = "/boot ${sysconfdir}"
-FILESPATH =. "${FILE_DIRNAME}/u-boot-git/${MACHINE}:"
 
 do_deploy () {
     install -d ${DEPLOYDIR}
 
-    if [ "${UBOOT_ONLY}" = "1" ]; then
-        install ${S}/${UBOOT_BINARY} ${DEPLOYDIR}
+    install ${S}/${UBOOT_IMAGE} ${DEPLOYDIR}
+    install ${S}/spl/${SPL_IMAGE} ${DEPLOYDIR}
 
-        cd ${DEPLOYDIR}
-        tar czvf us02-uboot.tar.gz ${UBOOT_BINARY}
-        #ln -sf ${VERSION_HUMAN}.tar.gz ${VERSION_HUMAN_NOVER}.tar.gz
-        rm ${UBOOT_BINARY}
+    cd ${DEPLOYDIR}
+    tar czvf us02-uboot.tar.gz ${UBOOT_IMAGE}
+    rm ${UBOOT_IMAGE}
 
-    elif [ "${SPL_ONLY}" = "1" ]; then
-        install ${S}/${SPL_BINARY} ${DEPLOYDIR}
-
-        cd ${DEPLOYDIR}
-        tar czvf us02-uboot.tar.gz ${SPL_BINARY}
-        #ln -sf ${VERSION_HUMAN}.tar.gz ${VERSION_HUMAN_NOVER}.tar.gz
-        rm ${SPL_BINARY}
-
-    fi
+    tar czvf us02-uboot-spl.tar.gz ${SPL_IMAGE}
+    rm ${SPL_IMAGE}
 }
 
 addtask deploy before do_build after do_compile
-addtask boot_tail before do_deploy after do_compile

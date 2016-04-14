@@ -6,12 +6,9 @@ SRCNAME = "uboot"
 SRC_URI = "git://github.com/ExorEmbedded/uboot-us02.git;protocol=git"
 SRC_URI[md5sum] = "7094df7dedb134fa41ee6679a34de190"
 SRBCRANCH = "master"
-SRCREV = "65a97b18f60551c7c45c9965c21fa59b66a1594f"
-PR = "r2"
+SRCREV = "cab40e340784b1dbf7c5a0f72697f0c1ae066d42"
+PR = "r3"
 
 S = "${WORKDIR}/git"
 
 require ../u-boot.inc
-
-UBOOT_ONLY = "1"
-UBOOT_SUFFIX = "img"
