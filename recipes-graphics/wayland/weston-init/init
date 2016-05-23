@@ -52,11 +52,11 @@ case "$1" in
 		exit 0
 	fi
 
+	sleep 1
+
 	CAL_VALUES=`weston-calibrator|cut -c21-`
 	echo 'SUBSYSTEM=="input", ENV{WL_CALIBRATION}="'$CAL_VALUES'"' > $WS_CALUDEV_FILE
 	echo "."
-
-	sleep 1
 
 	# Reload and re-run udev rules and restart weston
 	udevadm control --reload
