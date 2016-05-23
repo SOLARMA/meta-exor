@@ -4,6 +4,12 @@ SECTION = "bootloaders"
 
 inherit uboot-config deploy
 
+S = "${WORKDIR}/git"
+
+# Set these to exclusively build only first or second stage
+SPL_ONLY ?= "0"
+UBOOT_ONLY ?= "0"
+
 EXTRA_OEMAKE = 'CROSS_COMPILE=${TARGET_PREFIX} CC="${TARGET_PREFIX}gcc ${TOOLCHAIN_OPTIONS}"'
 
 # Allow setting an additional version string that will be picked up by the
@@ -15,8 +21,12 @@ UBOOT_SUFFIX = "img"
 UBOOT_IMAGE = "u-boot.${UBOOT_SUFFIX}"
 UBOOT_MAKE_TARGET = "all"
 
-SPL_SUFFIX = "hex"
-SPL_IMAGE = "u-boot-spl.${SPL_SUFFIX}"
+# Some versions of u-boot build an SPL (Second Program Loader) image that
+# should be packaged along with the u-boot binary as well as placed in the
+# deploy directory.  For those versions they can set the following variables
+# to allow packaging the SPL.
+SPL_SUFFIX ?= "bin"
+SPL_BINARY ?= "xloader.${SPL_SUFFIX}"
 
 do_compile () {
 	if [ "${@base_contains('DISTRO_FEATURES', 'ld-is-gold', 'ld-is-gold', '', d)}" = "ld-is-gold" ] ; then
@@ -35,23 +45,26 @@ do_compile () {
 
 	oe_runmake ${UBOOT_MACHINE}
 	oe_runmake ${UBOOT_MAKE_TARGET}
-
-        cd ${S}/spl
-        $(CROSS_COMPILE)objcopy -O ihex --adjust-vma -0xc0000000 u-boot-spl ${SPL_IMAGE}
 }
 
 do_deploy () {
     install -d ${DEPLOYDIR}
 
-    install ${S}/${UBOOT_IMAGE} ${DEPLOYDIR}
-    install ${S}/spl/${SPL_IMAGE} ${DEPLOYDIR}
+    if [ "${UBOOT_ONLY}" = "1" ]; then
+        install ${S}/${UBOOT_IMAGE} ${DEPLOYDIR}
 
-    cd ${DEPLOYDIR}
-    tar czvf us02-uboot.tar.gz ${UBOOT_IMAGE}
-    rm ${UBOOT_IMAGE}
+        cd ${DEPLOYDIR}
+        tar czvf ${MACHINE}-uboot.tar.gz ${UBOOT_IMAGE}
+        rm ${UBOOT_IMAGE}
 
-    tar czvf us02-uboot-spl.tar.gz ${SPL_IMAGE}
-    rm ${SPL_IMAGE}
+    elif [ "${SPL_ONLY}" = "1" ]; then
+        install ${S}/${SPL_BINARY} ${DEPLOYDIR}
+
+        cd ${DEPLOYDIR}
+        tar czvf ${MACHINE}-xloader.tar.gz ${SPL_BINARY}
+        rm ${SPL_BINARY}
+
+    fi
 }
 
 addtask deploy before do_build after do_compile

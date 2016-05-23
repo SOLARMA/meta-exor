@@ -16,8 +16,9 @@ BBLAYERS ?= " \
   ${SRCDIR}/yocto-meta-openembedded/meta-python \
   ${SRCDIR}/yocto-meta-openembedded/meta-networking \
   ${SRCDIR}/yocto-meta-openembedded/meta-multimedia \
-  ${SRCDIR}/meta-exor-us02 \
+  ${SRCDIR}/meta-exor \
   ${SRCDIR}/meta-browser \
+  ${SRCDIR}/meta-qt5 \
 "
 
 

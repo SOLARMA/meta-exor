@@ -5,8 +5,6 @@ PV = "${KERNEL_VERSION}+git${SRCPV}"
 
 SRC_URI += "file://defconfig"
 
-COMPATIBLE_MACHINE = "(usom02)"
-
 KERNEL_IMAGETYPE = "zImage"
 KERNEL_EXTRA_ARGS = "dtbs"
 
@@ -19,10 +17,20 @@ do_deploy_append() {
       install -m 0644 "${B}/${DTB_OUTPUT}/${DTB}" "${DEPLOYDIR}"
    done
 
+  # cd "${DEPLOYDIR}"
+  # mv ${KERNEL_DEVICETREE} ${DTB_TARGET}
+  # tar czvf "us02-kernel-${KERNEL_VERSION}-${DATETIME}.tar.gz" "${KERNEL_IMAGETYPE}" socfpga.dtb
+  # ln -sf "us02-kernel-${KERNEL_VERSION}-${DATETIME}.tar.gz" us02-kernel.tar.gz
    cd "${DEPLOYDIR}"
-   mv ${KERNEL_DEVICETREE} socfpga.dtb
-   tar czvf "us02-kernel-${KERNEL_VERSION}-${DATETIME}.tar.gz" "${KERNEL_IMAGETYPE}" socfpga.dtb
-   ln -sf "us02-kernel-${KERNEL_VERSION}-${DATETIME}.tar.gz" us02-kernel.tar.gz
+
+   if [ -n "${DTB_TARGET}" ] ; then
+		mv ${KERNEL_DEVICETREE} ${DTB_TARGET}
+		tar czvf "${MACHINE}-kernel-${KERNEL_VERSION}-${DATETIME}.tar.gz" "${KERNEL_IMAGETYPE}" ${DTB_TARGET}
+		ln -sf "${MACHINE}-kernel-${KERNEL_VERSION}-${DATETIME}.tar.gz" ${MACHINE}-kernel.tar.gz
+   else
+		tar czvf "${MACHINE}-kernel-${KERNEL_VERSION}-${DATETIME}.tar.gz" "${KERNEL_IMAGETYPE}" "${KERNEL_DEVICETREE}"
+		ln -sf "${MACHINE}-kernel-${KERNEL_VERSION}-${DATETIME}.tar.gz" ${MACHINE}-kernel.tar.gz 
+   fi
 
    rm -rf  ${KERNEL_IMAGETYPE}*
    rm -rf *.dtb

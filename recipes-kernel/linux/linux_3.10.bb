@@ -4,6 +4,8 @@ SRC_URI = "git://github.com/ExorEmbedded/linux-us02.git;protocol=git;branch=3.10
 SRC_URI[md5sum] = "7094df7dedb134fa41ee6679a34de190"
 SRCREV = "ebfc71d70b39dc5a88b91aa72df669fc67f838cb"
 
+COMPATIBLE_MACHINE = "(usom02)"
+
 include linux.inc
 
 PR = "r2"
