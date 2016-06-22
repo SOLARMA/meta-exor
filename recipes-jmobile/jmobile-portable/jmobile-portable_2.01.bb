@@ -3,12 +3,13 @@ LICENSE = "Proprietary"
 
 LIC_FILES_CHKSUM = "file://LICENSE.txt;md5=ce29dbb849109f28c0a0358e8fedbc64"
 
-PR = "233"
+PR = "1"
+PV = "233"
 
 SRC_URI = "file://jmobile.desktop"
 
-JM_URI_usom01 = "http://download.exorembedded.net:8080/Public/${MACHINE}/JMobile/jmobile2.01-${PR}_portable_us01kit_cds3.tar.gz"
-JM_URI_usom02 = "http://download.exorembedded.net:8080/Public/${MACHINE}/JMobile/jmobile2.01-${PR}_portable_alterakit_cds3.tar.gz"
+JM_URI_usom01 = "http://download.exorembedded.net:8080/Public/${MACHINE}/JMobile/jmobile2.01-${PV}-${PR}_portable_us01kit_cds3.tar.gz"
+JM_URI_usom02 = "http://download.exorembedded.net:8080/Public/${MACHINE}/JMobile/jmobile2.01-${PV}-${PR}_portable_alterakit_cds3.tar.gz"
 
 do_fetch() {
 	wget ${JM_URI} -O ${WORKDIR}/jmobile_portable.tar.gz

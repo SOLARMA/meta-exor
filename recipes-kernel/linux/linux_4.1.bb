@@ -2,7 +2,7 @@ FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}-${KERNEL_VERSION}:"
 
 SRC_URI = "git://github.com/ExorEmbedded/linux-us02.git;protocol=git;branch=4.1-LTS"
 SRC_URI[md5sum] = "7094df7dedb134fa41ee6679a34de190"
-SRCREV = "0dbc2ab33f82a52314230a0974609262ab131893"
+SRCREV = "81adf8992eecfe1874134ac317e2dfbaf3e90290"
 
 COMPATIBLE_MACHINE = "(usom02)"
 
