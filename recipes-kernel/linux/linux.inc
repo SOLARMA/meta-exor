@@ -3,8 +3,6 @@ require recipes-kernel/linux/linux-yocto.inc
 
 PV = "${KERNEL_VERSION}+git${SRCPV}"
 
-SRC_URI += "file://defconfig"
-
 KERNEL_IMAGETYPE = "zImage"
 KERNEL_EXTRA_ARGS = "dtbs"
 
@@ -17,10 +15,6 @@ do_deploy_append() {
       install -m 0644 "${B}/${DTB_OUTPUT}/${DTB}" "${DEPLOYDIR}"
    done
 
-  # cd "${DEPLOYDIR}"
-  # mv ${KERNEL_DEVICETREE} ${DTB_TARGET}
-  # tar czvf "us02-kernel-${KERNEL_VERSION}-${DATETIME}.tar.gz" "${KERNEL_IMAGETYPE}" socfpga.dtb
-  # ln -sf "us02-kernel-${KERNEL_VERSION}-${DATETIME}.tar.gz" us02-kernel.tar.gz
    cd "${DEPLOYDIR}"
 
    if [ -n "${DTB_TARGET}" ] ; then

@@ -1,0 +1,215 @@
+diff -uNr chromium-48.0.2548.0/third_party/libva/va/drm/va_drm.h chromium-48.0.2548.0-2/third_party/libva/va/drm/va_drm.h
+--- chromium-48.0.2548.0/third_party/libva/va/drm/va_drm.h	2015-10-07 04:42:27.000000000 +0200
++++ chromium-48.0.2548.0-2/third_party/libva/va/drm/va_drm.h	2016-07-12 01:41:27.022645662 +0200
+@@ -27,7 +27,7 @@
+ #ifndef VA_DRM_H
+ #define VA_DRM_H
+ 
+-#include <va/va.h>
++#include "../va.h"
+ 
+ /**
+  * \file va_drm.h
+diff -uNr chromium-48.0.2548.0/third_party/libva/va/drm/va_drm_utils.h chromium-48.0.2548.0-2/third_party/libva/va/drm/va_drm_utils.h
+--- chromium-48.0.2548.0/third_party/libva/va/drm/va_drm_utils.h	2015-10-23 03:00:47.000000000 +0200
++++ chromium-48.0.2548.0-2/third_party/libva/va/drm/va_drm_utils.h	2016-07-12 01:41:27.022645662 +0200
+@@ -27,7 +27,7 @@
+ #ifndef VA_DRM_UTILS_H
+ #define VA_DRM_UTILS_H
+ 
+-#include <va/va_backend.h>
++#include "../va_backend.h"
+ 
+ /**
+  * \file va_drm_utils.h
+diff -uNr chromium-48.0.2548.0/third_party/libva/va/egl/va_backend_egl.h chromium-48.0.2548.0-2/third_party/libva/va/egl/va_backend_egl.h
+--- chromium-48.0.2548.0/third_party/libva/va/egl/va_backend_egl.h	2015-10-07 04:42:27.000000000 +0200
++++ chromium-48.0.2548.0-2/third_party/libva/va/egl/va_backend_egl.h	2016-07-12 01:41:27.082645662 +0200
+@@ -25,8 +25,8 @@
+ #ifndef VA_BACKEND_EGL_H
+ #define VA_BACKEND_EGL_H
+ 
+-#include <va/va.h>
+-#include <va/va_backend.h>
++#include "../va.h"
++#include "../va_backend.h"
+ 
+ struct VADriverVTableEGL {
+     /* Get EGL ClientBufer buffer index and device id from surface id*/
+diff -uNr chromium-48.0.2548.0/third_party/libva/va/glx/va_glx.h chromium-48.0.2548.0-2/third_party/libva/va/glx/va_glx.h
+--- chromium-48.0.2548.0/third_party/libva/va/glx/va_glx.h	2015-10-07 04:42:27.000000000 +0200
++++ chromium-48.0.2548.0-2/third_party/libva/va/glx/va_glx.h	2016-07-12 01:41:26.962645662 +0200
+@@ -25,7 +25,7 @@
+ #ifndef VA_GLX_H
+ #define VA_GLX_H
+ 
+-#include <va/va.h>
++#include "../va.h"
+ #include <GL/glx.h>
+ 
+ #ifdef __cplusplus
+diff -uNr chromium-48.0.2548.0/third_party/libva/va/va_android.h chromium-48.0.2548.0-2/third_party/libva/va/va_android.h
+--- chromium-48.0.2548.0/third_party/libva/va/va_android.h	2015-10-07 04:42:27.000000000 +0200
++++ chromium-48.0.2548.0-2/third_party/libva/va/va_android.h	2016-07-12 01:41:27.086645662 +0200
+@@ -24,7 +24,7 @@
+ #ifndef _VA_ANDROID_H_
+ #define _VA_ANDROID_H_
+ 
+-#include <va/va.h>
++#include "va.h"
+ 
+ /** \brief Android Gralloc buffer memory type. */
+ #define VA_SURFACE_ATTRIB_MEM_TYPE_ANDROID_GRALLOC	0x00100000
+diff -uNr chromium-48.0.2548.0/third_party/libva/va/va_backend.h chromium-48.0.2548.0-2/third_party/libva/va/va_backend.h
+--- chromium-48.0.2548.0/third_party/libva/va/va_backend.h	2015-10-23 03:00:47.000000000 +0200
++++ chromium-48.0.2548.0-2/third_party/libva/va/va_backend.h	2016-07-12 01:41:26.970645662 +0200
+@@ -29,7 +29,7 @@
+ #ifndef _VA_BACKEND_H_
+ #define _VA_BACKEND_H_
+ 
+-#include <va/va.h>
++#include "va.h"
+ #include <linux/videodev2.h>
+ 
+ typedef struct VADriverContext *VADriverContextP;
+diff -uNr chromium-48.0.2548.0/third_party/libva/va/va_backend_tpi.h chromium-48.0.2548.0-2/third_party/libva/va/va_backend_tpi.h
+--- chromium-48.0.2548.0/third_party/libva/va/va_backend_tpi.h	2015-10-07 04:42:27.000000000 +0200
++++ chromium-48.0.2548.0-2/third_party/libva/va/va_backend_tpi.h	2016-07-12 01:41:27.050645662 +0200
+@@ -29,9 +29,9 @@
+ #ifndef _VA_BACKEND_TPI_H_
+ #define _VA_BACKEND_TPI_H_
+ 
+-#include <va/va.h>
+-#include <va/va_backend.h>
+-#include <va/va_tpi.h>
++#include "va.h"
++#include "va_backend.h"
++#include "va_tpi.h"
+ 
+ struct VADriverVTableTPI
+ {
+diff -uNr chromium-48.0.2548.0/third_party/libva/va/va_backend_vpp.h chromium-48.0.2548.0-2/third_party/libva/va/va_backend_vpp.h
+--- chromium-48.0.2548.0/third_party/libva/va/va_backend_vpp.h	2015-10-07 04:42:27.000000000 +0200
++++ chromium-48.0.2548.0-2/third_party/libva/va/va_backend_vpp.h	2016-07-12 01:41:27.034645662 +0200
+@@ -25,7 +25,7 @@
+ #ifndef VA_BACKEND_VPP_H
+ #define VA_BACKEND_VPP_H
+ 
+-#include <va/va_vpp.h>
++#include "va_vpp.h"
+ 
+ #ifdef __cplusplus
+ extern "C" {
+diff -uNr chromium-48.0.2548.0/third_party/libva/va/va_dec_jpeg.h chromium-48.0.2548.0-2/third_party/libva/va/va_dec_jpeg.h
+--- chromium-48.0.2548.0/third_party/libva/va/va_dec_jpeg.h	2015-10-23 03:00:47.000000000 +0200
++++ chromium-48.0.2548.0-2/third_party/libva/va/va_dec_jpeg.h	2016-07-12 01:41:27.094645662 +0200
+@@ -36,7 +36,7 @@
+ extern "C" {
+ #endif
+ 
+-#include <va/va.h>
++#include "va.h"
+ 
+ /**
+  * \defgroup api_dec_jpeg JPEG decoding API
+diff -uNr chromium-48.0.2548.0/third_party/libva/va/va.h chromium-48.0.2548.0-2/third_party/libva/va/va.h
+--- chromium-48.0.2548.0/third_party/libva/va/va.h	2015-10-23 03:00:47.000000000 +0200
++++ chromium-48.0.2548.0-2/third_party/libva/va/va.h	2016-07-12 01:41:27.094645662 +0200
+@@ -80,7 +80,7 @@
+ 
+ #include <stddef.h>
+ #include <stdint.h>
+-#include <va/va_version.h>
++#include "va_version.h"
+ 
+ #ifdef __cplusplus
+ extern "C" {
+@@ -2836,16 +2836,16 @@
+  */
+ #define VA_PICTURE_HEVC_RPS_LT_CURR             0x00000040
+ 
+-#include <va/va_dec_hevc.h>
+-#include <va/va_dec_jpeg.h>
+-#include <va/va_dec_vp8.h>
+-#include <va/va_dec_vp9.h>
+-#include <va/va_enc_hevc.h>
+-#include <va/va_enc_h264.h>
+-#include <va/va_enc_jpeg.h>
+-#include <va/va_enc_mpeg2.h>
+-#include <va/va_enc_vp8.h>
+-#include <va/va_vpp.h>
++#include "va_dec_hevc.h"
++#include "va_dec_jpeg.h"
++#include "va_dec_vp8.h"
++#include "va_dec_vp9.h"
++#include "va_enc_hevc.h"
++#include "va_enc_h264.h"
++#include "va_enc_jpeg.h"
++#include "va_enc_mpeg2.h"
++#include "va_enc_vp8.h"
++#include "va_vpp.h"
+ 
+ /**@}*/
+ 
+diff -uNr chromium-48.0.2548.0/third_party/libva/va/va_tpi.h chromium-48.0.2548.0-2/third_party/libva/va/va_tpi.h
+--- chromium-48.0.2548.0/third_party/libva/va/va_tpi.h	2015-10-07 04:42:27.000000000 +0200
++++ chromium-48.0.2548.0-2/third_party/libva/va/va_tpi.h	2016-07-12 01:41:26.966645662 +0200
+@@ -24,7 +24,7 @@
+ #ifndef _VA_TPI_H_
+ #define _VA_TPI_H_
+ 
+-#include <va/va.h>
++#include "va.h"
+ 
+ #ifdef __cplusplus
+ extern "C" {
+diff -uNr chromium-48.0.2548.0/third_party/libva/va/va_x11.h chromium-48.0.2548.0-2/third_party/libva/va/va_x11.h
+--- chromium-48.0.2548.0/third_party/libva/va/va_x11.h	2015-10-07 04:42:27.000000000 +0200
++++ chromium-48.0.2548.0-2/third_party/libva/va/va_x11.h	2016-07-12 01:41:27.106645663 +0200
+@@ -24,7 +24,7 @@
+ #ifndef _VA_X11_H_
+ #define _VA_X11_H_
+ 
+-#include <va/va.h>
++#include "va.h"
+ #include <X11/Xlib.h>
+ 
+ #ifdef __cplusplus
+diff -uNr chromium-48.0.2548.0/third_party/libva/va/wayland/va_backend_wayland.h chromium-48.0.2548.0-2/third_party/libva/va/wayland/va_backend_wayland.h
+--- chromium-48.0.2548.0/third_party/libva/va/wayland/va_backend_wayland.h	2015-10-07 04:42:27.000000000 +0200
++++ chromium-48.0.2548.0-2/third_party/libva/va/wayland/va_backend_wayland.h	2016-07-12 01:41:26.990645662 +0200
+@@ -27,7 +27,7 @@
+ #ifndef VA_BACKEND_WAYLAND_H
+ #define VA_BACKEND_WAYLAND_H
+ 
+-#include <va/va.h>
++#include "va/va.h"
+ #include <wayland-client.h>
+ 
+ /** \brief VA/Wayland API version. */
+diff -uNr chromium-48.0.2548.0/third_party/libva/va/wayland/va_wayland.h chromium-48.0.2548.0-2/third_party/libva/va/wayland/va_wayland.h
+--- chromium-48.0.2548.0/third_party/libva/va/wayland/va_wayland.h	2015-10-07 04:42:27.000000000 +0200
++++ chromium-48.0.2548.0-2/third_party/libva/va/wayland/va_wayland.h	2016-07-12 01:41:26.990645662 +0200
+@@ -27,7 +27,7 @@
+ #ifndef VA_WAYLAND_H
+ #define VA_WAYLAND_H
+ 
+-#include <va/va.h>
++#include "../va.h"
+ #include <wayland-client.h>
+ 
+ /**
+diff -uNr chromium-48.0.2548.0/third_party/libva/va/x11/va_dricommon.h chromium-48.0.2548.0-2/third_party/libva/va/x11/va_dricommon.h
+--- chromium-48.0.2548.0/third_party/libva/va/x11/va_dricommon.h	2015-10-07 04:42:27.000000000 +0200
++++ chromium-48.0.2548.0-2/third_party/libva/va/x11/va_dricommon.h	2016-07-12 01:41:27.034645662 +0200
+@@ -31,8 +31,8 @@
+ #include <drm_sarea.h>
+ #endif
+ 
+-#include <va/va_backend.h>
+-#include <va/va_drmcommon.h>
++#include "../va_backend.h"
++#include "../va_drmcommon.h"
+ 
+ #ifdef ANDROID
+ #define XID unsigned int

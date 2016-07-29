@@ -8,6 +8,8 @@ SRCREV = "df5ee4af9551111dc552b98f20e1fed8380c0be5"
 SRC_URI_usom02 = "git://github.com/ExorEmbedded/uboot-us02.git;protocol=git;branch=master"
 SRCREV_usom02 = "cab40e340784b1dbf7c5a0f72697f0c1ae066d42"
 
+UBOOT_SUFFIX_usom03 = "imx"
+
 require ../u-boot.inc
 
 PACKAGE_ARCH = "${MACHINE_ARCH}"

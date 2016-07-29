@@ -4,8 +4,6 @@ SRC_URI = "git://github.com/ExorEmbedded/linux-us01.git;protocol=git;branch=ti-l
 SRC_URI[md5sum] = "7094df7dedb134fa41ee6679a34de190"
 SRCREV = "f1c7654a9832b4f362b38456f1c349a2c1a9cee4"
 
-#DTB_TARGET = "socfpga.dtb"
-
 COMPATIBLE_MACHINE = "(usom01)"
 
 include linux.inc
