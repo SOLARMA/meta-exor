@@ -30,4 +30,6 @@ do_deploy_append() {
    rm -rf *.dtb
 }
 
+do_deploy[vardepsexclude] = "DATETIME"
+
 RDEPENDS_kernel-base = ""

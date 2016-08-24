@@ -20,7 +20,6 @@ QT5_GRAPHICS = "\
 	qtgraphicaleffects \
 	qtsmarthome \
 	cinematicexperience \
-	qt5-opengles2-test \
 	qt5nmapcarousedemo \
 "
 
