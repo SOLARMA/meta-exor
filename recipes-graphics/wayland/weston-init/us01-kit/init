@@ -33,12 +33,10 @@ case "$1" in
   start)
         . /etc/profile
 
-        # This is all a nasty hack
-        if test -z "$XDG_RUNTIME_DIR"; then
-                export XDG_RUNTIME_DIR=/run/user/root
-                mkdir --parents $XDG_RUNTIME_DIR
-                chmod 0700 $XDG_RUNTIME_DIR
-        fi
+        [ -z "$XDG_RUNTIME_DIR" ] && export XDG_RUNTIME_DIR=/run/user/root
+
+        mkdir --parents $XDG_RUNTIME_DIR
+        chmod 0700 $XDG_RUNTIME_DIR
 
         # Check if we need to calibrate the touchscreen
         if [ -e /dev/input/touchscreen0 -a ! -f "$WS_CALUDEV_FILE" ]; then
