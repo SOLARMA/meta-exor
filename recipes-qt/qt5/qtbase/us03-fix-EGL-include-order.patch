@@ -1,0 +1,14 @@
+--- git/src/platformsupport/eglconvenience/qeglpbuffer_p.h	2016-08-26 14:23:10.780430393 +0200
++++ git2/src/platformsupport/eglconvenience/qeglpbuffer_p.h	2016-08-26 14:22:52.900429806 +0200
+@@ -45,9 +45,10 @@
+ // We mean it.
+ //
+ 
+-#include <EGL/egl.h>
++#include <QtCore/qtextstream.h>
+ #include <qpa/qplatformoffscreensurface.h>
+ #include <QtPlatformSupport/private/qeglplatformcontext_p.h>
++#include <EGL/egl.h>
+ 
+ QT_BEGIN_NAMESPACE
+ 

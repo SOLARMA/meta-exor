@@ -18,6 +18,8 @@ SRC_URI += "\
     file://0002-deform-disable-opengl-button.patch \
 "
 
+SRC_URI_append_usom03 = "file://us03-fix-EGL-include-order.patch"
+
 PACKAGECONFIG_DISTRO += "gles2 accessibility fontconfig freetype libinput"
 PACKAGECONFIG_GL_usom01 = "gles2"
 
