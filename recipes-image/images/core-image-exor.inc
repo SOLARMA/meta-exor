@@ -32,6 +32,7 @@ IMAGE_INSTALL += "\
 	gst-meta-base \
 	packagegroup-cli-tools \
 	packagegroup-cli-tools-debug \
+	e2fsprogs \
 	gdbserver \
 	kernel-modules \
 	${QT5_BASE} \

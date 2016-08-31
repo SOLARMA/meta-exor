@@ -1,8 +1,8 @@
 FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}-${KERNEL_VERSION}:"
 
-SRC_URI = "git://github.com/ExorEmbedded/linux-us02.git;protocol=git;branch=4.1-LTS"
+SRC_URI = "git://github.com/ExorEmbedded/linux-us02.git;protocol=git;branch=4.1-LTS_us02_etop"
 SRC_URI[md5sum] = "7094df7dedb134fa41ee6679a34de190"
-SRCREV = "81adf8992eecfe1874134ac317e2dfbaf3e90290"
+SRCREV = "f1c72756b1648f6e4049ac443e30d92cb6952968"
 
 SRC_URI += "file://defconfig"
 
@@ -26,7 +26,8 @@ do_install_prepend() {
 
 INSANE_SKIP_linux += "installed-vs-shipped" 
 
-KERNEL_DEVICETREE = "socfpga_cyclone5_exor.dtb"
+KERNEL_DEVICETREE = "usom_us02kit.dtb"
+DTB_TARGET = "socfpga.dtb"
 
 KERNEL_VERSION = "4.1"
 
