@@ -25,6 +25,8 @@ QT5_GRAPHICS = "\
 
 IMAGE_INSTALL += "\
 	oprofile \
+	iproute2 \
+	canutils \
 	vim \
 	jmobile-portable \
 	openvpn \
