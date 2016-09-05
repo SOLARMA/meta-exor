@@ -4,7 +4,7 @@ GLES_EXTRA_DEPS = "libdrm ${@bb.utils.contains('DISTRO_FEATURES', 'wayland', 'wa
 
 PACKAGECONFIG[gles2] = "-opengl es2 -eglfs,,virtual/libgles2 virtual/egl ${GLES_EXTRA_DEPS}"
 
-QT_CONFIG_FLAGS_append_usom01 = "${@bb.utils.contains('DISTRO_FEATURES', 'wayland', '-qpa wayland', '', d)}"
+QT_CONFIG_FLAGS_append_usom01 = "${@bb.utils.contains('DISTRO_FEATURES', 'wayland', '-qpa wayland', '-qpa xcb', d)}"
 
 QT_EGLFS_PATCHES = "\
     file://0001-calculator-Add-exit-button-for-non-window-environmen.patch \
