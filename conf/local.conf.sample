@@ -217,6 +217,6 @@ BB_DISKMON_DIRS = "\
 CONF_VERSION = "1"
 
 # Mask machine specific layers
-BBMASK_usom01 = "meta-fsl-arm/"
-BBMASK_usom02 = "meta-fsl-arm/|meta-ti/"
+BBMASK = "meta-fsl-arm/|meta-ti/"
+BBMASK_us01-kit = "meta-fsl-arm/"
 BBMASK_usom03 = "meta-ti/"

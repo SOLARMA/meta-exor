@@ -6,7 +6,7 @@ LIC_FILES_CHKSUM = "file://LICENSE.txt;md5=ce29dbb849109f28c0a0358e8fedbc64"
 PR = "2"
 PV = "233"
 
-JM_URI_us01-kit = "http://download.exorembedded.net:8080/Public/usom01/JMobile/jmobile2.01-${PV}-${PR}_portable_us01kit_cds3.tar.gz"
+JM_URI = "http://download.exorembedded.net:8080/Public/usom01/JMobile/jmobile2.01-${PV}-${PR}_portable_us01kit_cds3.tar.gz"
 JM_URI_us02-kit = "http://download.exorembedded.net:8080/Public/usom02/JMobile/jmobile2.01-${PV}-${PR}_portable_alterakit_cds3.tar.gz"
 JM_URI_us03-kit = "http://download.exorembedded.net:8080/Public/usom03/JMobile/jmobile2.01-${PV}-${PR}_portable_us03kit_cds3.tar.gz"
 
