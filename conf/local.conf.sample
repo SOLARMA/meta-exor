@@ -35,6 +35,7 @@
 # - us01-kit
 # - us02-kit
 # - us03-kit
+# - ns01-kit
 #
 MACHINE = "us01-kit"
 

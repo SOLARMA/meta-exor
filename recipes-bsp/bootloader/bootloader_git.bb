@@ -8,7 +8,11 @@ SRCREV = "e7340191ba8c56f8c8733cc217cacc86030ac81a"
 SRC_URI_usom02 = "git://github.com/ExorEmbedded/uboot-us02.git;protocol=git;branch=master"
 SRCREV_usom02 = "cab40e340784b1dbf7c5a0f72697f0c1ae066d42"
 
+SRC_URI_nsom01 = "git://github.com/ExorEmbedded/uboot-us01.git;protocol=git;branch=uboot2017.07_nS01"
+SRCREV_nsom01  = "686142d8e316996f43f306bd04519e177d0f217d"
+
 UBOOT_SUFFIX_usom03 = "imx"
+UBOOT_SUFFIX_nsom01 = "imx"
 
 require ../u-boot.inc
 
