@@ -16,6 +16,10 @@ UBOOT_SUFFIX_nsom01 = "imx"
 
 require ../u-boot.inc
 
+EXTRA_OEMAKE += 'HOSTCC="${BUILD_CC} ${BUILD_CPPFLAGS}" \
+                 HOSTLDFLAGS="${BUILD_LDFLAGS}" \
+                 HOSTSTRIP=true'
+
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 
 UBOOT_ONLY = "1"
