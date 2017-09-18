@@ -7,6 +7,8 @@ with added real-time capabilities."
 require linux-imx.inc
 require recipes-kernel/linux/linux-dtb.inc
 
+PROVIDES += "linux"
+
 do_deploy () {
    install -d "${DEPLOYDIR}"
    install -m 0644 "${B}/arch/arm/boot/zImage" "${DEPLOYDIR}"
