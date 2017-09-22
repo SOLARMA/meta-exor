@@ -20,7 +20,7 @@ BBLAYERS += " \
   ${SRCDIR}/meta-browser \
   ${SRCDIR}/meta-qt5 \
   ${SRCDIR}/meta-ti \
-  ${SRCDIR}/meta-fsl-arm \
+  ${SRCDIR}/meta-freescale \
 "
 
 BBLAYERS_NON_REMOVABLE ?= " \

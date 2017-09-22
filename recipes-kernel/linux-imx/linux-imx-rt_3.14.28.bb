@@ -7,6 +7,12 @@ with added real-time capabilities."
 require linux-imx.inc
 require recipes-kernel/linux/linux-dtb.inc
 
+SRC_URI_append = "\
+    file://0001-Added-compiler-gcc6.h.patch \
+    file://0002-use-static-inline-in-ARM-ftrace.patch \
+    file://0003-change-extern-inline-to-static-inline-in-glue-cache.patch \
+"
+
 do_deploy () {
    install -d "${DEPLOYDIR}"
    install -m 0644 "${B}/arch/arm/boot/zImage" "${DEPLOYDIR}"

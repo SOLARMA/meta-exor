@@ -12,11 +12,12 @@ SRCBRANCH = "4.1-2.0.x-imx-RT"
 #SRCREV = "0542b88febdb0332faaaf519f5243d24890ba708"
 SRCREV = "${AUTOREV}"
 
-SRC_URI = "git://github.com/ExorEmbedded/linux-us03.git;branch=${SRCBRANCH} \
-           file://defconfig \
-"
+SRC_URI = "git://github.com/ExorEmbedded/linux-us03.git;branch=${SRCBRANCH}"
 S = "${WORKDIR}/git"
 require recipes-kernel/linux/linux-dtb.inc
+require ../linux-exor.inc
+
+PROVIDES += "linux kernel"
 
 do_deploy () {
    install -d "${DEPLOYDIR}"

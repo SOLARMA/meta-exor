@@ -1,7 +1,10 @@
 inherit kernel
-require recipes-kernel/linux/linux-yocto.inc
 
-PV = "${KERNEL_VERSION}+git${SRCPV}"
+PV = "${KERNEL_RELEASE}+git${SRCPV}"
+S = "${WORKDIR}/git"
+B = "${S}"
+
+include ../linux-exor.inc
 
 KERNEL_IMAGETYPE = "zImage"
 KERNEL_EXTRA_ARGS = "dtbs"
