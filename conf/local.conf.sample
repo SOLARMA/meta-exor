@@ -217,8 +217,11 @@ BB_DISKMON_DIRS = "\
 # this doesn't mean anything to you.
 CONF_VERSION = "1"
 
+# Add freescale dynamic layer
+BBFILE_COLLECTIONS += "browser-layer qt5-layer"
+
 # Mask machine specific layers
-BBMASK = "meta-fsl-arm/|meta-ti/"
-BBMASK_us01-kit = "meta-fsl-arm/"
-BBMASK_usom03 = "meta-ti/"
-BBMASK_nsom01 = "meta-ti/"
+BBMASK = "meta-freescale"
+BBMASK_us01-kit = "meta-freescale"
+BBMASK_usom03 = ""
+BBMASK_nsom01 = ""

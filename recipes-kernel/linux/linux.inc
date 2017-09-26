@@ -9,17 +9,20 @@ include ../linux-exor.inc
 KERNEL_IMAGETYPE = "zImage"
 KERNEL_EXTRA_ARGS = "dtbs"
 
-DTB_OUTPUT = "arch/arm/boot/dts"
+KERNEL_OUTPUT = "arch/arm/boot"
+DTB_OUTPUT = "${KERNEL_OUTPUT}/dts"
 
 do_deploy_append() {
+
    install -d "${DEPLOYDIR}"
-   install -m 0644 "${B}/${KERNEL_OUTPUT}" "${DEPLOYDIR}"
+   install -m 0644 "${B}/${KERNEL_OUTPUT}/${KERNEL_IMAGETYPE}" "${DEPLOYDIR}"
    for DTB in ${KERNEL_DEVICETREE}; do
       install -m 0644 "${B}/${DTB_OUTPUT}/${DTB}" "${DEPLOYDIR}"
    done
 
    cd "${DEPLOYDIR}"
 
+   return;
    if [ -n "${DTB_TARGET}" ] ; then
 		mv ${KERNEL_DEVICETREE} ${DTB_TARGET}
 		tar czvf "${MACHINE}-kernel-${KERNEL_VERSION}-${DATETIME}.tar.gz" "${KERNEL_IMAGETYPE}" ${DTB_TARGET}

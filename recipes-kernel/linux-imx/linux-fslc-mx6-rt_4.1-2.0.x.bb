@@ -9,8 +9,8 @@ inherit kernel fsl-kernel-localversion
 LOCALVERSION = "-4.1-2.0.x-imx"
 SCMVERSION = "y"
 SRCBRANCH = "4.1-2.0.x-imx-RT"
-#SRCREV = "0542b88febdb0332faaaf519f5243d24890ba708"
-SRCREV = "${AUTOREV}"
+SRCREV = "44babb922c39a626601f1edcd9a3e3a0f9f8ca13"
+#SRCREV = "${AUTOREV}"
 
 SRC_URI = "git://github.com/ExorEmbedded/linux-us03.git;branch=${SRCBRANCH}"
 S = "${WORKDIR}/git"
@@ -31,10 +31,10 @@ do_deploy () {
    if [ -n "${DTB_TARGET}" ] ; then
                 mv ${KERNEL_DEVICETREE} ${DTB_TARGET}
                 tar czvf "${MACHINE}-kernel-${KERNEL_VERSION}-${DATETIME}.tar.gz" "${KERNEL_IMAGETYPE}" ${DTB_TARGET}
-                ln -sf "${MACHINE}-kernel-${KERNEL_VERSION}-${DATETIME}.tar.gz" ${MACHINE}-kernel.tar.gz
+                ln -sf "${MACHINE}-kernel-${KERNEL_VERSION}-${DATETIME}.tar.gz" ${MACHINE}-kernelv-${DISTRO_VERSION}.tar.gz
    else
                 tar czvf "${MACHINE}-kernel-${KERNEL_VERSION}-${DATETIME}.tar.gz" "${KERNEL_IMAGETYPE}" "${KERNEL_DEVICETREE}"
-                ln -sf "${MACHINE}-kernel-${KERNEL_VERSION}-${DATETIME}.tar.gz" ${MACHINE}-kernel.tar.gz
+                ln -sf "${MACHINE}-kernel-${KERNEL_VERSION}-${DATETIME}.tar.gz" ${MACHINE}-kernel-v${DISTRO_VERSION}.tar.gz
    fi
 
    rm -rf  ${KERNEL_IMAGETYPE}*

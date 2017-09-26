@@ -54,14 +54,14 @@ do_deploy () {
         install ${S}/${UBOOT_IMAGE} ${DEPLOYDIR}
 
         cd ${DEPLOYDIR}
-        tar czvf ${MACHINE}-uboot.tar.gz ${UBOOT_IMAGE}
+        tar czvf ${MACHINE}-uboot-v${DISTRO_VERSION}.tar.gz ${UBOOT_IMAGE}
         rm ${UBOOT_IMAGE}
 
     elif [ "${SPL_ONLY}" = "1" ]; then
         install ${S}/${SPL_BINARY} ${DEPLOYDIR}
 
         cd ${DEPLOYDIR}
-        tar czvf ${MACHINE}-xloader.tar.gz ${SPL_BINARY}
+        tar czvf ${MACHINE}-xloader-v${DISTRO_VERSION}.tar.gz ${SPL_BINARY}
         rm ${SPL_BINARY}
 
     fi

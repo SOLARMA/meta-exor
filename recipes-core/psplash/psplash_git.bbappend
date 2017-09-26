@@ -1,4 +1,4 @@
-FILESEXTRAPATHS_prepend := "${THISDIR}/files-common:${THISDIR}/files-${MACHINE}:"
+FILESEXTRAPATHS_prepend := "${THISDIR}/files-common:${THISDIR}/files-${MACHINE}:${THISDIR}/files-kit:"
 
 SRC_URI += "file://psplash-bar-img.h"
 
