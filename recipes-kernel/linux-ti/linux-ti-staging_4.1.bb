@@ -6,7 +6,7 @@ LIC_FILES_CHKSUM = "file://COPYING;md5=d7810fab7487fb0aad327b76f1be7cd7"
 inherit kernel
 
 require recipes-kernel/linux/linux-dtb.inc
-require recipes-kernel/linux/setup-defconfig.inc
+require recipes-kernel/linux-ti/setup-defconfig.inc
 #require recipes-kernel/linux/ti-uio.inc
 
 # Look in the generic major.minor directory for files
