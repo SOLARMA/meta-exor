@@ -19,7 +19,6 @@ BBLAYERS += " \
   ${SRCDIR}/yocto-meta-openembedded/meta-multimedia \
   ${SRCDIR}/meta-browser \
   ${SRCDIR}/meta-qt5 \
-  ${SRCDIR}/meta-ti \
   ${SRCDIR}/meta-freescale \
 "
 
