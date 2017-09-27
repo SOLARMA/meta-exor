@@ -1,5 +1,4 @@
-# Copyright (C) 2012, 2015 O.S. Systems Software LTDA.
-# Released under the MIT license (see COPYING.MIT for the terms)
+# Copyright (C) 2017 Exor int 
 SUMMARY = "Linux real-time kernel based on linux-imx"
 DESCRIPTION = "Linux kernel that is based on Freescale's linux-imx, with added real-time capabilities."
 LICENSE = "GPLv2"

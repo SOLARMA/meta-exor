@@ -21,6 +21,24 @@ QT5_GRAPHICS = "\
 	qt5nmapcarousedemo \
 "
 
+TOOLS = "\
+	bash \
+	htop \
+	lsof \
+	nano \
+	nmon \
+	powertop \
+	screen \
+	socat \
+	sysstat \
+	evtest \
+	devmem2 \
+	i2c-tools \
+	gdb \
+	procps \
+ 	strace \
+ "
+
 IMAGE_INSTALL += "\
 	oprofile \
 	iproute2 \
@@ -30,12 +48,11 @@ IMAGE_INSTALL += "\
 	openvpn \
 	openssh-sftp-server \
 	gst-meta-base \
-	packagegroup-cli-tools \
-	packagegroup-cli-tools-debug \
 	e2fsprogs \
 	gdbserver \
 	kernel-modules \
 	${QT5_BASE} \
+	${TOOLS} \
 "
 
 IMAGE_FEATURES_remove = "ssh-server-dropbear"
