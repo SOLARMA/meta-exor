@@ -7,8 +7,8 @@ SECTION = "libs"
 LICENSE = "Proprietary"
 LIC_FILES_CHKSUM = "file://gpu-core/usr/include/gc_vdk.h;beginline=5;endline=11;md5=12c028cbbbedb4b8770267131500592c"
 
-DEPENDS += "${@base_contains('DISTRO_FEATURES', 'x11', 'virtual/libx11 libxdamage libxext libxfixes mesa', \
-                             base_contains('DISTRO_FEATURES', 'wayland', 'wayland', \
+DEPENDS += "${@bb.utils.contains('DISTRO_FEATURES', 'x11', 'virtual/libx11 libxdamage libxext libxfixes mesa', \
+               bb.utils.contains('DISTRO_FEATURES', 'wayland', 'wayland', \
                                            '', d), d)}"
 
 EXTRA_PROVIDES = ""
@@ -49,7 +49,7 @@ PACKAGES =+ "libclc-mx6 libclc-mx6-dev libclc-mx6-dbg \
 
 # Skip package if it does not match the machine float-point type in use
 python __anonymous () {
-        is_machine_hardfp = base_contains("TUNE_FEATURES", "callconvention-hard", True, False, d)
+        is_machine_hardfp = bb.utils.contains("TUNE_FEATURES", "callconvention-hard", True, False, d)
         is_package_hardfp = d.getVar("PACKAGE_FP_TYPE", True) == "hardfp"
 
         if is_package_hardfp != is_machine_hardfp:
@@ -59,9 +59,9 @@ python __anonymous () {
                 raise bb.parse.SkipPackage("Package Float-Point is not compatible with the machine")
 }
 
-USE_X11 = "${@base_contains("DISTRO_FEATURES", "x11", "yes", "no", d)}"
-USE_DFB = "${@base_contains("DISTRO_FEATURES", "directfb", "yes", "no", d)}"
-USE_WL = "${@base_contains("DISTRO_FEATURES", "wayland", "yes", "no", d)}"
+USE_X11 = "${@bb.utils.contains("DISTRO_FEATURES", "x11", "yes", "no", d)}"
+USE_DFB = "${@bb.utils.contains("DISTRO_FEATURES", "directfb", "yes", "no", d)}"
+USE_WL =  "${@bb.utils.contains("DISTRO_FEATURES", "wayland", "yes", "no", d)}"
 
 # Inhibit warnings about files being stripped.
 INHIBIT_PACKAGE_STRIP = "1"
