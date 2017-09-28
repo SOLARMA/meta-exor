@@ -64,4 +64,4 @@ IMAGE_FEATURES += "ssh-server-openssh"
 
 inherit populate_sdk_qt5
 
-TOOLCHAIN_OUTPUTNAME = "exor-evm-qt5-sdk"
+TOOLCHAIN_OUTPUTNAME = "${SDKMACHINE}-exor-${MACHINE}-qt5-x11-sdk-${DISTRO_VERSION}"

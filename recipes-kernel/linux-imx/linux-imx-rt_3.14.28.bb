@@ -6,6 +6,8 @@ with added real-time capabilities."
 
 require linux-imx.inc
 require recipes-kernel/linux/linux-dtb.inc
+require ../linux-exor.inc 
+
 PROVIDES += "linux kernel"
 SRC_URI_append = "\
     file://0001-Added-compiler-gcc6.h.patch \

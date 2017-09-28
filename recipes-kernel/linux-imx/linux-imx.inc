@@ -13,7 +13,6 @@ SRCBRANCH = "master"
 SRCREV = "e9cfc3a6fb75e8e78d46481028691504167917fe"
 
 SRC_URI = "git://github.com/ExorEmbedded/linux-us03.git;branch=${SRCBRANCH} \
-           file://defconfig \
 "
 
 S = "${WORKDIR}/git"

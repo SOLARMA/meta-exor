@@ -22,7 +22,6 @@ do_deploy_append() {
 
    cd "${DEPLOYDIR}"
 
-   return;
    if [ -n "${DTB_TARGET}" ] ; then
 		mv ${KERNEL_DEVICETREE} ${DTB_TARGET}
 		tar czvf "${MACHINE}-kernel-${KERNEL_VERSION}-${DATETIME}.tar.gz" "${KERNEL_IMAGETYPE}" ${DTB_TARGET}
@@ -30,7 +29,7 @@ do_deploy_append() {
 		tar czvf "${MACHINE}-kernel-${KERNEL_VERSION}-${DATETIME}.tar.gz" "${KERNEL_IMAGETYPE}" "${KERNEL_DEVICETREE}"
    fi
 
-   ln -sf "${MACHINE}-kernel-${KERNEL_VERSION}-${DATETIME}.tar.gz" ${MACHINE}-kernel.tar.gz
+   ln -sf "${MACHINE}-kernel-${KERNEL_VERSION}-${DATETIME}.tar.gz" ${MACHINE}-kernel-v${DISTRO_VERSION}.tar.gz
 
    rm -rf  ${KERNEL_IMAGETYPE}*
    rm -rf *.dtb
