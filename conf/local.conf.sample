@@ -223,5 +223,5 @@ BBFILE_COLLECTIONS += "browser-layer qt5-layer"
 # Mask machine specific layers
 BBMASK = "meta-freescale"
 BBMASK_us01-kit = "meta-freescale"
-BBMASK_usom03 = ""
+BBMASK_usom03 = "meta-freescale/recipes-graphics/mesa/mesa_%.bbappend"
 BBMASK_nsom01 = ""

@@ -26,7 +26,8 @@ EXTRA_OEMAKE += "-C ${S} -d -f Makefile prefix=${D}/usr \
                  BUILD_IN_YOCTO=1 \
                  XSERVER_GREATER_THAN_13=1"
 
-CFLAGS += "-I${STAGING_INCDIR}/xorg \
+CFLAGS += "-Wno-implicit-function-declaration -Wno-implicit-int \
+           -I${STAGING_INCDIR}/xorg \
            -I${STAGING_INCDIR}/drm \
            -I../../DRI_1.10.4/src"
 
@@ -78,3 +79,6 @@ FILES_xserver-xorg-extension-viv-autohdmi = " ${libdir}/libfsl_x11_ext${SOLIBS} 
 
 PACKAGE_ARCH = "${MACHINE_SOCARCH}"
 COMPATIBLE_MACHINE = "(mx6)"
+
+INSANE_SKIP_${PN} += "ldflags"
+INSANE_SKIP_xserver-xorg-extension-viv-autohdmi += "ldflags"
