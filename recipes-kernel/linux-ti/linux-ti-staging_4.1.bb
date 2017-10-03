@@ -26,7 +26,8 @@ S = "${WORKDIR}/git"
 BRANCH = "ti-lsk-linux-4.1.y"
 
 SRCREV = "f7c8d520ad63b5dd227debd6770f807c4c43ff8d"
-PV = "4.1.18+git${SRCPV}"
+#PV = "4.1.18+git${SRCPV}"
+#PV = "4.1.18"
 
 # Append to the MACHINE_KERNEL_PR so that a new SRCREV will cause a rebuild
 MACHINE_KERNEL_PR_append = "l"
@@ -39,6 +40,7 @@ MULTI_CONFIG_BASE_SUFFIX = ""
 KERNEL_GIT_URI = "git://github.com/ExorEmbedded/linux-us01.git"
 KERNEL_GIT_PROTOCOL = "git"
 SRC_URI += "${KERNEL_GIT_URI};protocol=${KERNEL_GIT_PROTOCOL};branch=${BRANCH} \
+			file://0001-Added-compiler-gcc6.h.patch \
             file://defconfig"
 
 do_deploy () {
@@ -53,10 +55,12 @@ do_deploy () {
    if [ -n "${DTB_TARGET}" ] ; then
                 mv ${KERNEL_DEVICETREE} ${DTB_TARGET}
                 tar czvf "${MACHINE}-kernel-${KERNEL_VERSION}-${DATETIME}.tar.gz" "${KERNEL_IMAGETYPE}" ${DTB_TARGET}
-                ln -sf "${MACHINE}-kernel-${KERNEL_VERSION}-${DATETIME}.tar.gz" ${MACHINE}-kernel.tar.gz
+                ln -sf "${MACHINE}-kernel-${KERNEL_VERSION}-${DATETIME}.tar.gz" ${MACHINE}-kernel-v${DISTRO_VERSION}.tar.gz
+
    else
                 tar czvf "${MACHINE}-kernel-${KERNEL_VERSION}-${DATETIME}.tar.gz" "${KERNEL_IMAGETYPE}" "${KERNEL_DEVICETREE}"
-                ln -sf "${MACHINE}-kernel-${KERNEL_VERSION}-${DATETIME}.tar.gz" ${MACHINE}-kernel.tar.gz
+                ln -sf "${MACHINE}-kernel-${KERNEL_VERSION}-${DATETIME}.tar.gz" ${MACHINE}-kernel-v${DISTRO_VERSION}.tar.gz
+
    fi
 
    rm -rf  ${KERNEL_IMAGETYPE}*

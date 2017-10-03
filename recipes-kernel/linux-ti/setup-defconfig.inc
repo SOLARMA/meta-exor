@@ -21,8 +21,8 @@ do_configure() {
     # tree config
     cp ${WORKDIR}/defconfig ${B}/.config
 
-    echo ${KERNEL_LOCALVERSION} > ${B}/.scmversion
-    echo ${KERNEL_LOCALVERSION} > ${S}/.scmversion
+#    echo ${KERNEL_LOCALVERSION} > ${B}/.scmversion
+#    echo ${KERNEL_LOCALVERSION} > ${S}/.scmversion
 
     # Zero, when using "tisdk" configs, pass control to defconfig_builder
     config=`cat ${B}/.config | grep use-tisdk-config | cut -d= -f2`
