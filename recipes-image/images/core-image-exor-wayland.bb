@@ -12,8 +12,9 @@ COMPATIBLE_MACHINE = "(usom03)"
 
 IMAGE_INSTALL += " \
 	qtwayland \
-        qtwayland-plugins \
+    qtwayland-plugins \
 	${QT5_GRAPHICS} \
+	wayland-protocols \
 "
 
 # Sitara SGX libraries
@@ -29,3 +30,5 @@ IMAGE_INSTALL_append_usom03 = " \
 require core-image-exor.inc
 
 export IMAGE_BASENAME = "core-image-exor-wayland"
+
+TOOLCHAIN_OUTPUTNAME = "${SDKMACHINE}-exor-${MACHINE}-qt5-wayland-sdk-${DISTRO_VERSION}"

@@ -1,6 +1,7 @@
 QT5_BASE = "\
 	qtbase \
 	qtmultimedia \
+	qtmultimedia-examples \
 	qtimageformats \
 "
 
@@ -39,6 +40,13 @@ TOOLS = "\
  	strace \
  "
 
+GSTREAMER = "\
+	gstreamer1.0-meta-base \
+	gstreamer1.0-meta-video \
+	gstreamer1.0-plugins-good \
+	gstreamer1.0-plugins-bad \
+"
+
 IMAGE_INSTALL += "\
 	oprofile \
 	iproute2 \
@@ -47,10 +55,10 @@ IMAGE_INSTALL += "\
 	jmobile-portable \
 	openvpn \
 	openssh-sftp-server \
-	gst-meta-base \
 	e2fsprogs \
 	gdbserver \
 	kernel-modules \
+	${GSTREAMER} \
 	${QT5_BASE} \
 	${TOOLS} \
 "
@@ -63,5 +71,8 @@ IMAGE_FEATURES += "ssh-server-openssh"
 #CORE_IMAGE_EXTRA_INSTALL += "chromium"
 
 inherit populate_sdk_qt5
+
+# Required by qtcreator debugger
+TOOLCHAIN_HOST_TASK += "nativesdk-python3-json"
 
 TOOLCHAIN_OUTPUTNAME = "${SDKMACHINE}-exor-${MACHINE}-qt5-x11-sdk-${DISTRO_VERSION}"
