@@ -8,7 +8,7 @@ require recipes-graphics/images/core-image-weston.bb
 REQUIRED_DISTRO_FEATURES = "wayland"
 CONFLICT_DISTRO_FEATURES = "x11"
 
-COMPATIBLE_MACHINE = "(us01kit|usom03)"
+COMPATIBLE_MACHINE = "(us01-kit|usom03)"
 
 IMAGE_INSTALL += " \
 	qtwayland \
