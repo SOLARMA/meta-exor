@@ -1,7 +1,6 @@
 QT5_BASE = "\
 	qtbase \
 	qtmultimedia \
-	qtmultimedia-examples \
 	qtimageformats \
 "
 
